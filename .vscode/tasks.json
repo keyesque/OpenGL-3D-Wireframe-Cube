@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build Cube.exe",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "C:/msys64/ucrt64/bin/g++.exe -g -std=c++17 -I${workspaceFolder}/include -I${workspaceFolder}/include/glm -L${workspaceFolder}/lib ${workspaceFolder}/src/main.cpp ${workspaceFolder}/src/glad.c ${workspaceFolder}/src/stb.cpp -lglfw3dll -o ${workspaceFolder}/cube.exe && ${workspaceFolder}/cube.exe"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: C:/msys64/ucrt64/bin/g++.exe"
+        },
+        {
+            "label": "Run Cube.exe",
+            "type": "shell",
+            "command": "${workspaceFolder}/cube.exe",
+            "dependsOn": "Build Cube.exe",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
